@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <title>Form - Novo Usuario</title>
+</head>
+<body id="form">
+    <header class="p-3 mb-3 border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <img th:src="@{/img/Bootstrap_logo.svg.png}" src="" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none" alt="logo bootstrap">
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/users" class="nav-link px-2 link-dark">Lista</a></li>
+                    <li><a href="/newuser" class="nav-link px-2 link-dark">Cadastra</a></li>
+                    <li><a href="#" class="nav-link px-2 link-dark">Opp 3</a></li>
+                    <li><a href="#" class="nav-link px-2 link-dark">Opp 4</a></li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="text-center text-muted">
+            <h1 class="m-5 display-6 fw-semibold">Formulário de cadastro</h1>
+        </div>
+        <div class="mt-2 mb-2">
+            <form th:action="@{/users/new}" method="post" th:object="${newUserForm}">
+                <div class="m-5">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{situation}" id="ASSISTED" value="ASSISTED">
+                        <label class="form-check-label" for="ASSISTED">Assistida</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{situation}" id="PACIENT" value="PACIENT">
+                        <label class="form-check-label" for="PACIENT">Paciente</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{situation}" id="VOLUNTARY" value="VOLUNTARY">
+                        <label class="form-check-label" for="VOLUNTARY">Voluntario</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="registrant">Cadastrante</label>
+                        <input class="form-control" type="text" th:field="*{registrant}" id="registrant" readonly>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="registrationDate">Data de cadastro</label>
+                        <input class="form-control" type="date" th:field="*{{registrationDate}}" id="registrationDate" readonly>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="userCode">Código</label>
+                        <input class="form-control" type="text" th:field="*{userCode}" id="userCode" readonly>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="name">Nome completo</label>
+                    <input class="form-control" type="text" th:field="*{name}" id="name">
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="birthdate">Data de nascimento</label>
+                        <input class="form-control" type="date" th:field="*{{birthdate}}" id="birthdate">
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="rg">R.G</label>
+                        <input class="form-control" type="text" th:field="*{rg}" id="rg">
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="cpf">C.P.F</label>
+                        <input class="form-control" type="text" th:field="*{cpf}" id="cpf">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-2">
+                        <label class="form-label" for="cep">CEP</label>
+                        <input class="form-control" type="text" th:field="*{cep}" id="cep">
+                    </div>
+                    <div class="mb-3 col-9">
+                        <label class="form-label" for="address">Endereço</label>
+                        <input class="form-control" type="text" th:field="*{address}" id="address">
+                    </div>
+                    <div class="mb-3 col-1">
+                        <label class="form-label" for="number">Endereço</label>
+                        <input class="form-control" type="text" th:field="*{number}" id="number">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-2">
+                        <label class="form-label" for="complement">Complemento</label>
+                        <input class="form-control" type="text" th:field="*{complement}" id="complement">
+                    </div>
+                    <div class="mb-3 col-5">
+                        <label class="form-label" for="district">Bairro</label>
+                        <input class="form-control" type="text" th:field="*{district}" id="district">
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="city">Cidade</label>
+                        <input class="form-control" type="text" th:field="*{city}" id="city">
+                    </div>
+                    <div class="mb-3 col-1">
+                        <label class="form-label" for="uf">UF</label>
+                        <input class="form-control" type="text" th:field="*{uf}" id="uf">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="mobileNumber">Celular</label>
+                        <input class="form-control" type="text" th:field="*{mobileNumber}" id="mobileNumber">
+                    </div>
+                    <div class="mb-3 col-3">
+                        <label class="form-label" for="phoneToMessage">Recados</label>
+                        <input class="form-control" type="text" th:field="*{phoneToMessage}" id="phoneToMessage">
+                    </div>
+                    <div class="mb-3 col-6">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" th:field="*{email}" id="email">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="occupation">Profissão</label>
+                        <input class="form-control" type="text" th:field="*{occupation}" id="occupation">
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="workspace">Empresa onde trabalha</label>
+                        <input class="form-control" type="text" th:field="*{workspace}" id="workspace">
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="workStatus">Está</label>
+                        <select class="form-select" th:field="*{workStatus}" id="workStatus">
+                            <option value="">Selecione</option>
+                            <option value="WORKING">Trabalhando</option>
+                            <option value="AWAY_FROM_WORK">Afastada</option>
+                            <option value="RETIRED">Aposentada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <p>Participa de algum grupo de apoio?</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{participantSupportGroup}" value="true" id="true">
+                            <label class="form-check-label" for="true">Sim</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{participantSupportGroup}" value="false"
+                                   id="false">
+                            <label class="form-check-label" for="false">Não</label>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="groupName">Nome do grupo</label>
+                        <input class="form-control" type="text" th:field="*{groupName}" id="groupName">
+                    </div>
+                    <div class="mb-3 col-4">
+                        <label class="form-label" for="groupActivity">Em qual atividade?</label>
+                        <input class="form-control" type="text" th:field="*{groupActivity}" id="groupActivity">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="howDidYouFindUs">Como soube do Neomama?</label>
+                    <input class="form-control" type="text" th:field="*{howDidYouFindUs}" id="howDidYouFindUs">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="obs">Observação</label>
+                    <textarea class="form-control" placeholder="Leave a comment here" th:field="*{obs}" id="obs"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit" id="submit">Submit form</button>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <footer class="py-5 border-top">
+                <div class="row">
+                    <div class="col-6 col-md-2 mb-3">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2 mb-3">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6 col-md-2 mb-3">
+                        <h5>Section</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-5 offset-md-1 mb-3">
+                        <form>
+                            <h5>Subscribe to our newsletter</h5>
+                            <p>Monthly digest of what's new and exciting from us.</p>
+                            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                                <label for="newsletter1" class="visually-hidden">Email address</label>
+                                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p>&copy; 2022 Company, Inc. All rights reserved.</p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+                        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script th:src="@{/js/index.js}" ></script>
+</body>
+</html>
