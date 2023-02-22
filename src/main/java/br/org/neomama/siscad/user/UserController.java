@@ -1,5 +1,6 @@
 package br.org.neomama.siscad.user;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
+@CrossOrigin("*")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -22,7 +24,7 @@ public class UserController {
 
         List<UserDTO> userDTOs = UserDTO.dtoTo(users);
         model.addAttribute("userDTOs", userDTOs);
-        return "users.jsp";
+        return "users";
     }
 
     @PostMapping("/users/new")
@@ -43,12 +45,6 @@ public class UserController {
     public String showForm(Model model, NewUserForm newUserForm) {
         model.addAttribute("newUserForm", newUserForm);
         return "newUserForm";
-    }
-
-    @GetMapping("/size")
-    public String getSize() {
-        long sizeUserCreated = userRepository.getSizeUserCreated(LocalDate.now());
-        return null;
     }
 
 

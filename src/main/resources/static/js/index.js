@@ -1,20 +1,27 @@
-
 const inputRegistrationDate = document.querySelector('#registrationDate');
 const inputRegistrant = document.querySelector('#registrant');
 const inputUserCode = document.querySelector('#userCode');
-let counter = 0;
 
-document.addEventListener("DOMContentLoaded", function(event){
+const url = "http://localhost:8080/size";
+
+document.addEventListener("DOMContentLoaded", function (event) {
     inputRegistrationDate.value = formatDate();
     inputRegistrant.value = 'INM';
     inputUserCode.value = generateCode();
-
-    console.log(formatDate())
 });
 
-document.addEventListener('click', function (event){
-    counter++;
-})
+
+
+// async function getIndexDatedToday() {
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     const obj = data
+//     console.log(text)
+//
+//     return text;
+// }
+
+console.log(getIndexDatedToday());
 
 function formatDate() {
     let date = new Date(),
@@ -30,6 +37,5 @@ function formatDate() {
 
 function generateCode() {
     const data = new Date().toLocaleDateString();
-    return data.substring(9) + data.substring(3, 5) + data.substring(0, 2) + counter;
+    return data.substring(9) + data.substring(3, 5) + data.substring(0, 2) + '';
 }
-
